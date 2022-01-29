@@ -1,1 +1,3 @@
-# sn_front
+# Prototipe for the Social Network. Front-end
+
+
