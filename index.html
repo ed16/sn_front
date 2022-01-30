@@ -29,6 +29,27 @@
             clear: both;
         }
     </style>
+    <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+    <script>
+        $(function () {
+
+            $('form').on('submit', function (e) {
+
+                e.preventDefault();
+
+                $.ajax({
+                    type: 'post',
+                    url: 'http://localhost:8080/sendMessage',
+                    data: $('form').serialize(),
+                    success: function () {
+                        alert('form was submitted');
+                    }
+                });
+
+            });
+
+        });
+    </script>
 </head>
 
 <body>
@@ -42,16 +63,17 @@
         <div class="column middle" style="background-color:rgb(216, 216, 216);">
             <h2>The Wall</h2>
             <div class="row">
-                <form action="/sendMessage" name="messageForm" method="post">
-                    <textarea name="textArea" id="textArea" class="text" cols="40" rows="5"></textarea><br>
-                    <input type="submit" value="Send message" class="submitButton">
-                 </form>
-                 <button>Attach audio</button>
-                 <button>Attach video</button>
-                
+                <form id="form1" name="form1">
+                    <textarea id="textarea1" cols="40" rows="5"></textarea><br>
+                    <input name="submit" type="submit" value="Send message">
+                </form>
+                <button>Attach audio</button>
+                <button>Attach video</button>
+
             </div>
             <div class="row">
                 <p>Message 1</p>
+                <!-- http://localhost:8080/sendMessage -->
             </div>
             <div class="row">
                 <p>Message 2</p>
